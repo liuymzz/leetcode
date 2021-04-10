@@ -71,9 +71,11 @@ class Solution {
     }
 
     private TreeNode build(int[] nums, int lo, int hi) {
-        if (lo > hi) return null;
-        int maxVal = nums[lo];
+        if (lo > hi) {
+            return null;
+        }
         int maxIndex = lo;
+        int maxVal = nums[lo];
         for (int i = lo; i <= hi; i++) {
             if (nums[i] > maxVal){
                 maxVal = nums[i];
