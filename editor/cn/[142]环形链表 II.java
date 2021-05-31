@@ -58,6 +58,9 @@
 
 
 //leetcode submit region begin(Prohibit modification and deletion)
+
+import java.util.HashSet;
+
 /**
  * Definition for singly-linked list.
  * class ListNode {
@@ -70,6 +73,7 @@
  * }
  */
 public class Solution {
+    /* 双指针法
     public ListNode detectCycle(ListNode head) {
         ListNode slow = head,fast=head;
         while (fast!=null&&fast.next!=null){
@@ -88,6 +92,20 @@ public class Solution {
             fast=fast.next;
         }
         return slow;
+    }*/
+
+    public ListNode detectCycle(ListNode head) {
+        HashSet<ListNode> set = new HashSet<ListNode>();
+        ListNode p = head;
+        while (p != null){
+            if (set.contains(p)){
+                return p;
+            }
+            set.add(p);
+            p=p.next;
+        }
+
+        return null;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
