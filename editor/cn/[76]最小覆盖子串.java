@@ -39,6 +39,9 @@ import java.util.Map;
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
+    /**
+     * 滑动窗口，右边的下标不断的右移，直到满足条件，再右移左边的下边
+     */
     public String minWindow(String s, String t) {
         Map<Character,Integer> need = new HashMap<>(),window = new HashMap<>();
         for (char c : t.toCharArray()) {
