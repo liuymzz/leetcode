@@ -53,7 +53,7 @@ import java.util.Map;
 class Solution {
 
     // 递归回溯+备忘录解法
-    String w1, w2;
+    /*String w1, w2;
     Map<String, Integer> cache = new HashMap<>();
 
     // word1 -> word2
@@ -76,6 +76,38 @@ class Solution {
         else
             cache.put(m + " " + n, Math.min(dp(m - 1, n) + 1, Math.min(dp(m, n - 1) + 1, dp(m - 1, n - 1) + 1)));
         return cache.get(m + " " + n);
+    }*/
+
+    // 动态规划 子问题 自底向上
+    // word1 -> word2
+    public int minDistance(String word1, String word2) {
+        int w1Length = word1.length();
+        int w2Length = word2.length();
+        int[][] dp = new int[w1Length +1][w2Length +1];
+
+        for (int i = 0; i <= w1Length; i++) {
+            dp[i][0]=i;
+        }
+        for (int i = 0; i <=w2Length; i++) {
+            dp[0][i]=i;
+        }
+
+        for (int i = 1; i <= w1Length; i++) {
+            for (int j = 1; j <= w2Length; j++) {
+                if (word1.charAt(i-1) == word2.charAt(j-1))
+                    dp[i][j]=dp[i-1][j-1];
+                else
+                    dp[i][j]=Math.min(dp[i-1][j-1],Math.min(dp[i][j-1],dp[i-1][j]))+1;
+            }
+        }
+
+        for (int i = 0; i < w1Length; i++) {
+            for (int i1 = 0; i1 < w2Length; i1++) {
+                System.out.format("%5d",dp[i][i1]);
+            }
+            System.out.println();
+        }
+        return dp[word1.length()][word2.length()];
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
