@@ -6,7 +6,7 @@
 // 例如，给出 
 //
 // 前序遍历 preorder = [3,9,20,15,7]
-//中序遍历 inorder = [9,3,15,20,7] 
+//中序遍历 inorder = [9,3,15,20,7]
 //
 // 返回如下的二叉树： 
 //
@@ -43,6 +43,10 @@ class Solution {
                      inorder,0,inorder.length - 1);
     }
 
+    /**
+     * 前序 [3,9,20,15,7]
+     * 中序 [9,3,15,20,7]
+     */
     public TreeNode build(int[] preorder,int preStart,int preEnd,
                           int[] inorder,int inStart,int inEnd){
         if (preStart > preEnd) return null;
